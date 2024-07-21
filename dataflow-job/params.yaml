@@ -1,0 +1,23 @@
+# Dataflow
+project: ese-exam-sandbox-acosta-h
+bucket: amt-storage-ese-hendrick
+region: us-central1
+num_workers: 5
+machine_type: n1-standard-2
+disk_size: 100
+pubsub_topic: cdc-amt
+network: private-network
+subnetwork: private-network
+
+# Job
+output:
+  project: ese-exam-sandbox-acosta-h
+  dataset: cxm
+  table: transactions
+  schema: cust_id:INT64,item:INT64,price:FLOAT64,time:INT64,processing_time:INT64,fraud_score:FLOAT64
+  write_disposition: WRITE_APPEND
+  create_disposition: CREATE_IF_NEEDED
+
+# MT Database
+mt_server: 10.1.20.9
+mt_port: 5656
